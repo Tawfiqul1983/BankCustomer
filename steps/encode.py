@@ -26,12 +26,13 @@ def encode_features(data: pd.DataFrame, nominal_features: Union[list, None] = No
             logging.info(f"Encoded nominal feature: {column}")
 
         for column in ordinal_features:
-            encoder = OrdinalEncoder(handle_unknown="error").fit(data[[column,]])
+            encoder = OrdinalEncoder(
+                handle_unknown="error").fit(data[[column,]])
             data[column] = encoder.transform(data[[column,]])
             encoders[column] = encoder
             logging.info(f"Encoded Ordinal feature: {column}")
         logging.info("Categorical features encoded successfully.")
-        dump(encoders, os.path.join(config.ENCODERS_PATH, 'encoders.joblib'))
+        dump(encoders, os.path.join(config.ARTIFACTS_PATH, 'encoders.joblib'))
         logging.info("Encoders saved successfully.")
         return data
     except Exception as e:
