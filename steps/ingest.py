@@ -3,7 +3,6 @@ from zenml import step
 import pandas as pd
 from typing import Union
 
-
 @step(enable_cache=True)
 def ingest_data(data_source: str) -> Union[pd.DataFrame, None]:
     """
