@@ -1,9 +1,3 @@
-import configparser
-
-config = configparser.ConfigParser()
-config.read('config.ini')
-
-
 DATA_SOURCE = 'data/bank.csv'
 ARTIFACTS_PATH = 'model'
 NOMINAL_FEATURES = [
@@ -13,8 +7,7 @@ ORDINAL_FEATURES = ['education',]
 NUMERICAL_FEATURES = ['age', 'trestbps', 'chol', 'thalach', 'oldpeak']
 TARGET_FEATURE = 'target'
 LOG_FORMAT = '%(asctime)s %(levelname)s %(message)s'
-API_KEY_HOPSWORKS = config['hopsworks']['API_KEY']
-FEATURE_GROUP_NAME = config['hopsworks']['FEATURE_GROUP_NAME']
+
 FEATURE_DESCRIPTIONS = [
     {"name": "age", "description": "Customer's age"},
     {"name": "job", "description": "Customer's occupation or job type"},
